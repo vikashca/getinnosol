@@ -1,0 +1,31 @@
+<div class="loginwrapper">
+    <div class="logo">
+        <img src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" alt="">
+    </div>
+    <div class="text-center mt-4 name">
+        Login
+    </div>
+    <form class="p-3 mt-3"  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-field">
+            <span class="far fa-user"></span>
+            <input type="text" name="" placeholder="Enter Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+            </div>
+        </div>
+        <div class="form-field">
+            <span class="fas fa-key"></span>
+            <input type="password" class="form-control" name="password" formControlName="password" placeholder="Password" [ngClass]="{'is-invalid': submitted && f['password'].errors}">
+
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                <div *ngIf="f['password'].errors['password']">Password must be at least 6 characters</div>
+            </div>
+        </div>
+        <button class="btn mt-3">Login</button>
+    </form>
+    <div class="text-center fs-6">
+        <a href="#">Forget password?</a> or <a routerLink="/sign-up">Sign up</a>
+    </div>
+</div>
